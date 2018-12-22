@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display");
+body {
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9b9eb6), to(#646887));
+  background: linear-gradient(#9b9eb6, #646887);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#js-fail-message {
+  text-align: center;
+  color: white;
+  margin: auto 5vw;
+  font-size: 2em;
+}
+
+#page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  padding: 3vh 10vw 2vh 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+header #alert-box {
+  min-width: 50%;
+  max-width: 100%;
+  border: 4px solid transparent;
+  border-radius: 0.5em;
+}
+
+header #alert-box.active {
+  -webkit-animation: border-pulse 0.5s alternate 5 ease-in-out forwards;
+          animation: border-pulse 0.5s alternate 5 ease-in-out forwards;
+}
+
+@-webkit-keyframes border-pulse {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: #66ffff;
+  }
+}
+
+@keyframes border-pulse {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: #66ffff;
+  }
+}
+
+main {
+  margin: auto;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+#timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(8vw + 10vh);
+  font-family: 'Major Mono Display', monospace;
+  font-weight: bold;
+}
+
+#timer #minutes,
+#timer #seconds {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+#timer #separator {
+  margin-top: calc( -1vw - 1vh);
+  text-shadow: 1px 1px white;
+}
+
+#controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#controls button {
+  font-size: 3em;
+  margin: 10px;
+}
+/*# sourceMappingURL=main.css.map */
