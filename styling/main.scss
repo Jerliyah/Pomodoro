@@ -33,6 +33,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 120px;
+    box-sizing: border-box;
 
     #alert-box {
         min-width: 50%;

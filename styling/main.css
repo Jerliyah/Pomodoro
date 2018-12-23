@@ -41,6 +41,9 @@ header {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  height: 120px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 header #alert-box {

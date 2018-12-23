@@ -1,5 +1,9 @@
 
 Vue.component('alert-box', {
+    props: {
+        transmission: String
+    },
+    
     data: function() {
         return {
             test2: "::J:: alerts are here"
@@ -10,7 +14,7 @@ Vue.component('alert-box', {
     template: `
         <section id="alert-box" class="active" aria-label="alert box">
             <p class="alert" role="alert">
-                {{test2}}
+                {{ transmission }}
             </p>
         </section>
     `
@@ -25,25 +29,25 @@ const app = new Vue({
     el: '#js-fail-message',
 
     data: {
-        test1: "::J:: Vue is here",
-
         virtual_timer: null,
         seconds_left: (25 * 60),
-        timer_is_running: false
-
+        timer_is_running: false,
+        alert_message: ''
     },
 
     methods: {
         countdown: function() {
-            this.seconds_left -= 1
-
-            console.log('::J::  seconds left: ', this.seconds_left)
+            if( this.seconds_left >= 0 ) {
+                this.seconds_left -= 1
+                this.alert_engine(this.seconds_left)
+            }
+            else {
+                this.reset_timer()
+            }
         },
 
         start_timer: function() {
-            this.timer = setInterval( () => {
-                this.countdown()
-            }, 1000 )
+            this.timer = setInterval( () => this.countdown(), 1000 )
             this.timer_is_running = true
             console.log('::J::  Timer started')
         },
@@ -60,25 +64,56 @@ const app = new Vue({
             this.seconds_left = (25 * 60)
             this.timer_is_running = false
             console.log('::J::  Timer reset')
+        },
+
+        alert_engine(seconds_left) {
+            if( this.seconds_left === ((25 * 60) - 1) ) {
+                this.alert_message = "time to work"
+            }
+            if( this.seconds_left === (15 * 60) ) {
+                this.alert_message = "half way there"
+            }
+            if( this.seconds_left <= 1 ) {
+                this.alert_message =" break time"
+            }
+
+            setTimeout( () => this.alert_message = '', 3000)
+            console.log("::J::", this.seconds_left, this.alert_message)
+        },
+
+        time_padding(integer) {
+            if( integer < 10) {
+                return '0' + integer
+            }
+            else {
+                return integer
+            }
         }
     },
 
     computed: {
-
+        minutes: function() {
+            return this.time_padding( Math.floor( this.seconds_left / 60) )
+        },
+        seconds: function() {
+            return this.time_padding( this.seconds_left - (this.minutes * 60) )
+        }
     },
 
     template: `
         <div id="page">
             <header>
                 <h1>Pomodoro</h1>
-                <alert-box />
+                <alert-box 
+                    :transmission="alert_message"
+                    v-if="alert_message"/>
             </header>
 
             <main>
                 <section id="timer" aria-label="timer">
-                    <span id="minutes" aria-label="minutes">25</span>
+                    <span id="minutes" aria-label="minutes">{{minutes}}</span>
                     <span id="separator">:</span>
-                    <span id="seconds" aria-label="seconds">00</span>
+                    <span id="seconds" aria-label="seconds">{{seconds}}</span>
                     <!-- <span class="tester">{{ test1 }}</span> -->
                 </section>
 
