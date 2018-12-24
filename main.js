@@ -35,6 +35,22 @@ const app = new Vue({
         alert_message: ''
     },
 
+    mounted: function() {
+        get_data()
+            .then( (data) => {
+                console.log('::J:: retrieved', data)
+                if( data ) {
+                    // ::J:: The data is returned as an array of strings
+                    this.seconds_left =  parseInt( data[0] )
+                    timer_is_running = data[1]
+
+                    if( timer_is_running === 'true') {
+                        this.start_timer()
+                    }
+                }
+        })
+    },
+
     methods: {
         countdown: function() {
             if( this.seconds_left >= 0 ) {
@@ -44,18 +60,24 @@ const app = new Vue({
             else {
                 this.reset_timer()
             }
+
+            if( save_data ) { save_data() }
         },
 
         start_timer: function() {
             this.timer = setInterval( () => this.countdown(), 1000 )
             this.timer_is_running = true
             console.log('::J::  Timer started')
+
+            
         },
 
         pause_timer: function() {
             clearInterval( this.timer )
             this.timer_is_running = false
             console.log('::J::  Timer paused')
+
+            if( save_data ) { save_data() }
         },
 
         reset_timer: function() {
@@ -63,6 +85,8 @@ const app = new Vue({
             this.timer = null
             this.seconds_left = (25 * 60)
             this.timer_is_running = false
+
+            if( delete_data ) { delete_data() }
             console.log('::J::  Timer reset')
         },
 
