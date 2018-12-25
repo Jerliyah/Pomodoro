@@ -78,7 +78,7 @@ p {
 #timer {
     display: flex;
     justify-content: center;
-    font-size: calc(8vw + 10vh);
+    font-size: calc(8vw + 8vh);
     font-family: 'Major Mono Display', monospace;
     font-weight: bold;
 
@@ -91,9 +91,9 @@ p {
     #separator {
         margin-top: calc( -1vw - 1vh );
         text-shadow: 1px 1px white;
-    }
 
-    // TODO: Add a pulse effect for each second or minute using scale
+        animation: 0.5s alternate infinite ease-in;
+    }
 }
 
 

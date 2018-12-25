@@ -99,7 +99,7 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: calc(8vw + 10vh);
+  font-size: calc(8vw + 8vh);
   font-family: 'Major Mono Display', monospace;
   font-weight: bold;
 }
@@ -113,6 +113,8 @@ p {
 #timer #separator {
   margin-top: calc( -1vw - 1vh);
   text-shadow: 1px 1px white;
+  -webkit-animation: 0.5s alternate infinite ease-in;
+          animation: 0.5s alternate infinite ease-in;
 }
 
 #controls {
