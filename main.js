@@ -32,7 +32,7 @@ const app = new Vue({
         virtual_timer: null,
         seconds_left: (25 * 60),
         timer_is_running: false,
-        alert_message: ''
+        alert_message: undefined
     },
 
     mounted: function() {
@@ -53,19 +53,20 @@ const app = new Vue({
 
     methods: {
         countdown: function() {
-            if( this.seconds_left >= 0 ) {
+            if( this.seconds_left > 0 ) {
                 this.seconds_left -= 1
                 this.alert_engine(this.seconds_left)
             }
-            else {
-                this.reset_timer()
-            }
+            // ::J:: Optional feature, I think I like it better when the user resets manually at the end of the countdown
+            // else { 
+            //     this.reset_time()
+            // }
 
             if( save_data ) { save_data() }
         },
 
         start_timer: function() {
-            this.timer = setInterval( () => this.countdown(), 1000 )
+            this.virtual_timer = setInterval( () => this.countdown(), 1000 )
             this.timer_is_running = true
             console.log('::J::  Timer started')
 
@@ -73,7 +74,7 @@ const app = new Vue({
         },
 
         pause_timer: function() {
-            clearInterval( this.timer )
+            clearInterval( this.virtual_timer )
             this.timer_is_running = false
             console.log('::J::  Timer paused')
 
@@ -81,8 +82,8 @@ const app = new Vue({
         },
 
         reset_timer: function() {
-            clearInterval(this.timer)
-            this.timer = null
+            clearInterval(this.virtual_timer)
+            this.virtual_timer = null
             this.seconds_left = (25 * 60)
             this.timer_is_running = false
 
@@ -90,28 +91,27 @@ const app = new Vue({
             console.log('::J::  Timer reset')
         },
 
+
         alert_engine(seconds_left) {
-            if( this.seconds_left === ((25 * 60) - 1) ) {
+            if( this.seconds_left < (25 * 60)
+             && this.seconds_left > ((25 * 60) - 4)) {
                 this.alert_message = "time to work"
             }
-            if( this.seconds_left === (15 * 60) ) {
+            else if( this.seconds_left < (25 * 30) 
+                  && this.seconds_left > ((25 * 30) - 4)) {
                 this.alert_message = "half way there"
             }
-            if( this.seconds_left <= 1 ) {
+            else if( this.seconds_left <= 1 ) {
                 this.alert_message =" break time"
             }
-
-            setTimeout( () => this.alert_message = '', 3000)
-            console.log("::J::", this.seconds_left, this.alert_message)
+            else {
+                this.alert_message = undefined
+            }
         },
 
         time_padding(integer) {
-            if( integer < 10) {
-                return '0' + integer
-            }
-            else {
-                return integer
-            }
+            if( integer < 10) { return '0' + integer }
+            else { return integer }
         }
     },
 

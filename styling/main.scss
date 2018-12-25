@@ -3,7 +3,7 @@
 
 // Variables
 $purple: #7E82A0;
-$accent: #66ffff;
+$accent: white;
 
 
 body {
@@ -42,6 +42,7 @@ header {
         max-width: 100%;
         border: 4px solid transparent;
         border-radius: 0.5em;
+        text-transform: capitalize;
 
         &.active {
             animation: border-pulse 0.5s alternate 5 ease-in-out forwards;

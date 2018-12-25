@@ -52,6 +52,7 @@ header #alert-box {
   max-width: 100%;
   border: 4px solid transparent;
   border-radius: 0.5em;
+  text-transform: capitalize;
 }
 
 header #alert-box.active {
@@ -64,7 +65,7 @@ header #alert-box.active {
     border-color: transparent;
   }
   to {
-    border-color: #66ffff;
+    border-color: white;
   }
 }
 
@@ -73,7 +74,7 @@ header #alert-box.active {
     border-color: transparent;
   }
   to {
-    border-color: #66ffff;
+    border-color: white;
   }
 }
 

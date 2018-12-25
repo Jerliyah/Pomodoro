@@ -1,3 +1,23 @@
-# ToDo
-- Complete this project
-- Merge old pomodoro with new and present growth
+# Pomodoro
+This app is a time management tool using the Pomodoro Technique. It was developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals, traditionally 25 minutes in length, separated by short breaks.
+
+I created this project for a few reasons, I wanted to:
+- Show my growth since the last time I created a pomodoro
+- Focus on accessibility features
+- Practive with Vue
+
+## Features
+- Built with Vue.js
+- Easy to read visual timer 
+- Conditional play, pause, and reset buttons
+- Calm, minimilist design
+- Responsive sizing
+- Screen reader friendly
+- Sufficiently high contrast
+- Alternative message for JavaScript disabled users
+
+## Screenshots
+
+## Getting Started
+
+## Issue Notes
