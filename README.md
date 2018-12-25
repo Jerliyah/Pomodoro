@@ -6,6 +6,7 @@ I created this project for a few reasons, I wanted to:
 - Focus on accessibility features
 - Practive with Vue
 
+
 ## Features
 - Built with Vue.js
 - Easy to read visual timer 
@@ -16,8 +17,15 @@ I created this project for a few reasons, I wanted to:
 - Sufficiently high contrast
 - Alternative message for JavaScript disabled users
 
+
 ## Screenshots
 
-## Getting Started
+### Version 2
+![Pomodoro project, version 2](v2/screenshots/demo.gif)
 
-## Issue Notes
+### Version 1
+![Pomodoro project, version 1](v1/screenshots/demo.gif)
+
+
+## Getting Started
+It's very vanilla; simply download the project and run the index.html file in your browser
