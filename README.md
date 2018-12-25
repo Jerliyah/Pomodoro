@@ -3,13 +3,15 @@ This app is a time management tool using the Pomodoro Technique. It was develope
 
 I created this project for a few reasons, I wanted to:
 - Show my growth since the last time I created a pomodoro
-- Focus on accessibility features
+- Focus on accessibility
 - Practive with Vue
 
 
 ## Features
 - Built with Vue.js
 - Easy to read visual timer 
+- Alert messages based on time reached
+- Local session storage of timer state (the app continues to function even when page is refreshed)
 - Conditional play, pause, and reset buttons
 - Calm, minimilist design
 - Responsive sizing
